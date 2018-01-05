@@ -21,14 +21,20 @@
 			background: url('./images/doneBG.jpg') no-repeat;
 			background-size: cover;
 		}
+		#symbolBoard{
+			display: none;
+		}
+		input{
+			background: aqua;
+		}
 	</style>
 </head>
 <body>
 	<div class="nav"></div>
 	<!-- 账号 -->
-	<input type="text" name="">
+	<input id="accountBtn" type="text" name="">
 	<!-- 密码输入 -->
-	<input type="password" name="">
+	<input id="passwordBtn" type="password" name="">
 	<!-- 数字键盘 -->
 	<div>
 		<ul>
@@ -51,6 +57,109 @@
 		
 	</div>
 	<!-- 特殊符号键盘 -->
-	<div></div>
+	<div id="symbolBoard">
+		<ul>
+			<li>[</li>
+			<li>]</li>
+			<li>{</li>
+			<li>}</li>
+			<li>#</li>
+			<li>%</li>
+			<li>^</li>
+			<li>*</li>
+			<li>+</li>
+			<li>=</li>
+			<li>_</li>
+			<li>-</li>
+			<li>/</li>
+			<li>:</li>
+			<li>;</li>
+			<li>(</li>
+			<li>)</li>
+			<li>$</li>
+			<li>&</li>
+			<li>@</li>
+			<li>.</li>
+			<li>,</li>
+			<li>?</li>
+			<li>!</li>
+			<li>'</li>
+			<li>\</li>
+			<li>|</li>
+			<li>~</li>
+			<li>删除</li>
+			<li>`</li>
+			<li><</li>
+			<li>></li>
+			<li>■</li>
+			<li>♣</li>
+			<li>￥</li>
+			<li>"</li>
+			<li>登陆</li>
+		</ul>
+	</div>
+
+<script>
+	var passwordBtn = document.getElementById('passwordBtn');
+	var symbolBoard = document.getElementById('symbolBoard');
+
+	// 数字键盘
+	var numberBoard_arr = [1, 2, 3, 4, 5, 6, 7, 8, '删除', 9, 0, '登陆'];
+	// 字母键盘
+	var alphabetBoard_arr = [];
+	// 特殊符号键盘
+	var symbolBoard_arr = ['[', ']', '{', '}', '#', '%', '^', '*', '+', '=', '_', '-',  ':', ';', '(', ')', '$', '&', '@', '.', ',', '?', '!', '\'', '\'', '|', '~' , '删除', '`', '<', '>', '♥', '♠','￥', '"', '登陆'];
+
+
+	var arr = ['a', 'b', 'c', 'd'];
+
+	Array.prototype.delete=function(delIndex){
+		var temArray=[];
+		for(var i=0;i<this.length;i++){
+			if(i!=delIndex){
+				temArray.push(this[i]);
+			}
+		}
+		return temArray;
+	}
+
+	function shuffle(array) {
+	    var tmp, current, top =array.length;
+	    if(top) while(--top){
+		    current =Math.floor(Math.random() * (top + 1));
+		    tmp =array[current];
+		    array[current] =array[top];
+		    array[top] = tmp;
+	    }
+	    array.splice(27, 0, '删除');
+	    array[array.length] ='登陆';
+	    return array;
+	}
+
+	function deleteArr(arr,index) {
+		var temArray=[];
+		for(var i=0;i<arr.length;i++){
+			if(i!=index){
+				temArray.push(arr[i]);
+			}
+		}
+		return temArray;
+	}
+
+
+	passwordBtn.onclick = function () {
+
+		symbolBoard_arr = deleteArr(symbolBoard_arr, 27);
+		symbolBoard_arr.pop();
+		console.log('打乱前==》', symbolBoard_arr);
+
+		symbolBoard_arr = shuffle(symbolBoard_arr);
+		console.log('打乱后==》', symbolBoard_arr);
+
+	}
+
+
+
+</script>
 </body>
-</html>
+</html> 
