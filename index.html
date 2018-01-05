@@ -46,7 +46,7 @@
 	</section>
     <section class="line">
     	<p id="chooseNum">数字</p>
-    	<p id="choose">字母</p>
+    	<p id="chooseAlp">字母</p>
     	<p id="chooseSym">特殊符号</p>
     </section>
 	<!-- 数字键盘 -->
@@ -68,7 +68,7 @@
 	</div>
 	<!-- 字母键盘 -->
 	<div class="English">
-		<ul class="first">
+		<ul class="first" id="alphabetBoard">
 			<li>A</li>
 			<li>B</li>
 			<li>c</li>
@@ -80,7 +80,7 @@
 			<li>I</li>
 			<li>J</li>
 		</ul>
-		<ul class="middle">
+		<!-- <ul class="middle">
 			<li>K</li>
 			<li>L</li>
 			<li>M</li>
@@ -101,9 +101,9 @@
 			<li>Y</li>
 			<li>Z</li>
 			<li class="delt">删除</li>
-		</ul>
+		</ul> -->
 		<div class="last">
-			<p>中国工商银行安全键盘</p>
+			<p>比财科技银行安全键盘</p>
 			<p>登 录</p>
 		</div>
 	</div>
@@ -157,12 +157,9 @@
 	// 数字键盘
 	var numberBoard_arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 	// 字母键盘
-	var alphabetBoard_arr = [];
+	var alphabetBoard_arr = ['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m'];
 	// 特殊符号键盘
 	var symbolBoard_arr = ['[', ']', '{', '}', '#', '%', '^', '*', '+', '=', '_', '-',  ':', ';', '(', ')', '$', '&', '@', '.', ',', '?', '!', '\'', '\'', '|', '~' , '`', '<', '>', '♥', '♠','￥', '"'];
-
-
-	var arr = ['a', 'b', 'c', 'd'];
 
 	var chooseNum = document.getElementById('chooseNum');
 
@@ -177,9 +174,22 @@
 		}
 		numberBoard.innerHTML = numberInnerHtml;
 		numberBoard_arr = renewArr(numberBoard_arr, 8);
-		var NumDiv = getByClass('body', 'num');
-		NumDiv.style.display = 'block';
+		// var NumDiv = getByClass('body', 'num');
+		// NumDiv.style.display = 'block';
 		
+	}
+	// 切换到字母
+	chooseAlp.onclick = function() {
+		// 字母键盘的第 19 项是 切换大小写 ； 最后一项是删除
+		alphabetBoard_arr = shuffle(alphabetBoard_arr, 19);
+		console.log(alphabetBoard_arr);
+		var alphabetInnerHTML = '';
+		for(var i = 0; i < alphabetBoard_arr.length; i++) {
+			alphabetInnerHTML += '<li>'+alphabetBoard_arr[i]+'</li>'
+		}
+		alphabetBoard.innerHTML = alphabetInnerHTML;
+		alphabetBoard_arr = renewArr(alphabetBoard_arr, 19);
+		// alphabetBoard_arr = 
 	}
 
 	// 切换到特殊符号
