@@ -1,0 +1,195 @@
+.login{
+	background-color: pink;
+	padding-top: 0.4rem;
+}
+.login section{
+  width: 100%;
+  margin: 0 auto;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+}
+.login section img {
+  width: 0.28rem;
+  height: 0.5rem;
+  margin:0 0 0.1rem 0.5rem;
+}
+.login section input {
+  width: 80%;
+  font-size: 0.24rem;
+  color: rgba(255, 255, 255, 0.69);
+  line-height: 0.5rem;
+  margin-left: 0.3rem;
+}
+.login div{
+  width: 100%;
+  background-color: #E05670;
+  color: white;
+  font-size: 0.3rem;
+  line-height: 0.8rem;
+  text-align: center;
+  margin: 0.4rem 0;
+}
+.line{
+  width: 95%;
+  margin-right: 5%;
+  text-align: right;
+}
+.line p{
+  width: 15%;
+  font-size: 0.24rem;
+  display: inline-block;
+  line-height: 0.8rem;
+  text-align: center;
+}
+.num{
+	width: 100%;
+	margin-top: 0.3rem;
+  display: none;
+}
+.num ul{
+	width: 90%;
+	display: flex;
+	display: -webkit-flex;
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+	align-items:center;
+	-webkit-align-items: center;
+	flex-wrap: wrap;
+	-webkit-flex-wrap: wrap;
+	margin: 0 auto;
+	text-align: center;
+}
+.num ul li{
+	width: 30%;
+	height: 1rem;
+	line-height: 1rem;
+	font-size: 0.4rem;
+	color:rgba(0,0,0,0.5);
+	background-color: white;
+	margin-bottom: 0.3rem;
+	border-radius: 0.08rem;
+}
+.symbolBoard{
+  width: 100%;
+  margin-top: 0.3rem;
+  display: none;
+}
+.symbolBoard ul{
+  width: 98%;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  align-items:center;
+  -webkit-align-items: center;
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  margin: 0 auto;
+  text-align: center;
+}
+.symbolBoard ul li{
+  width: 9%;
+  height: 1rem;
+  line-height: 1rem;
+  font-size: 0.4rem;
+  color:rgba(0,0,0,0.5);
+  background-color: white;
+  margin:0 0.03rem 0.3rem;
+  border-radius: 0.08rem;
+}
+.symbolBoard ul li.del{
+  width: 18%;
+}
+.symbolBoard ul li.login_mobile{
+  width: 27%;
+}
+.English{
+  width: 100%;
+  margin-top: 0.3rem;
+}
+.English .first{
+  width: 98%;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  align-items:center;
+  -webkit-align-items: center;
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  margin: 0 auto;
+  text-align: center;
+}
+.English .first li{
+  width: 9%;
+  height: 1rem;
+  line-height: 1rem;
+  font-size: 0.4rem;
+  color:rgba(0,0,0,0.5);
+  background-color: white;
+  margin:0 0.03rem 0.3rem;
+  border-radius: 0.08rem;
+}
+.English .middle{
+  width: 87%;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  align-items:center;
+  -webkit-align-items: center;
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  margin: 0 auto;
+  text-align: center;
+}
+.English .middle li{
+  width: 10%;
+  height: 1rem;
+  line-height: 1rem;
+  font-size: 0.4rem;
+  color:rgba(0,0,0,0.5);
+  background-color: white;
+  margin:0 0.03rem 0.3rem;
+  border-radius: 0.08rem;
+}
+.English .last{
+  width: 98%;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  align-items:center;
+  -webkit-align-items: center;
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  margin: 0 auto;
+  text-align: center;
+}
+.English .last li{
+  width: 9%;
+  height: 1rem;
+  line-height: 1rem;
+  font-size: 0.4rem;
+  color:rgba(0,0,0,0.5);
+  background-color: white;
+  margin:0 0.03rem 0.3rem;
+  border-radius: 0.08rem;
+}
+.English .last li.change,.English .last li.delt{
+  width: 13%;
+}
+.English .last p:nth-of-type(1){
+  width: 75%;
+  font-size:0.48rem;
+  background-color: white;
+  border-radius: 0.08rem;
+  line-height: 1rem;
+}
+.English .last p:nth-of-type(2){
+  width: 20%;
+  color:white;
+  font-size:0.48rem;
+  background-color: aqua;
+  border-radius: 0.08rem;
+  line-height: 1rem;
+}
