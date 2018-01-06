@@ -45,7 +45,7 @@
 	    </div>
 	</section>
     <section class="line">
-    	<p id="chooseNum on">数字</p>
+    	<p id="chooseNum" class="on">数字</p>
     	<p id="chooseAlp">字母</p>
     	<p id="chooseSym">特殊符号</p>
     </section>
@@ -180,17 +180,6 @@
 	for(var i = 0; i < changeBtns.length; i++) {
 		(function(index){
 			changeBtns[i].onclick=function(){
-				switch (changeBtns[i]) {
-					case 'NumDiv':
-						chuooseNum_fn();
-						break;
-					case 'alpDiv':
-						chooseAlp_fn();
-						break;
-					case 'symDiv':
-						chooseSym_fn();
-						break;
-				}
 				for(var i=0;i<changeBtns.length;i++){
 					removeClass(changeBtns[i], 'on');
 					removeClass(boardsArray[i], 'active');
@@ -222,10 +211,9 @@
 	}
 
 	// 切换到数字
-	boardsArray[0].addEventListener('click', chuooseNum_fn(), false);
+	chooseNum.addEventListener('click', chuooseNum_fn, false);
 
 	function chuooseNum_fn(){
-		alert('数字')
 		// 数字的第 8 项是 删除， 最后一项是登陆;
 		numberBoard_arr = shuffle(numberBoard_arr, 8);
 		console.log(numberBoard_arr);
@@ -237,10 +225,9 @@
 		numberBoard_arr = renewArr(numberBoard_arr, 8);
 	}
 	// 切换到字母
-	chooseAlp.addEventListener('click', chooseAlp_fn(), false);
+	chooseAlp.addEventListener('click', chooseAlp_fn, false);
 
 	function chooseAlp_fn() {
-		alert('字母')
 		// 字母键盘的第 19 项是 切换大小写 ； 最后一项是删除
 		alphabetBoard_arr = shuffle(alphabetBoard_arr, 19);
 		console.log(alphabetBoard_arr);
@@ -253,10 +240,9 @@
 	}
 
 	// 切换到特殊符号
-	chooseSym.addEventListener('click', chooseSym_fn(), false);
+	chooseSym.addEventListener('click', chooseSym_fn, false);
 
 	function chooseSym_fn() {
-		alert('特殊符号')
 		// 特殊符号的第 27 项是 删除， 最后一项是登陆；
 		symbolBoard_arr = shuffle(symbolBoard_arr, 27);
 		console.log(symbolBoard_arr);
