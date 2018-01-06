@@ -45,12 +45,12 @@
 	    </div>
 	</section>
     <section class="line">
-    	<p id="chooseNum">数字</p>
+    	<p id="chooseNum on">数字</p>
     	<p id="chooseAlp">字母</p>
     	<p id="chooseSym">特殊符号</p>
     </section>
 	<!-- 数字键盘 -->
-	<div class="num">
+	<div class="num active">
 		<ul id="numberBoard">
 			<!-- <li>1</li>
 			<li>2</li>
@@ -151,7 +151,10 @@
 	</div>
 
 <script>
+	var bodyTag = document.getElementsByTagName('body')[0];
+	// 密码输入框
 	var passwordBtn = document.getElementById('passwordBtn');
+	// 特殊符号区域
 	var symbolBoard = document.getElementById('symbolBoard');
 
 	// 数字键盘
@@ -160,11 +163,69 @@
 	var alphabetBoard_arr = ['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m'];
 	// 特殊符号键盘
 	var symbolBoard_arr = ['[', ']', '{', '}', '#', '%', '^', '*', '+', '=', '_', '-',  ':', ';', '(', ')', '$', '&', '@', '.', ',', '?', '!', '\'', '\'', '|', '~' , '`', '<', '>', '♥', '♠','￥', '"'];
-
+	// 选择字母键盘按钮
 	var chooseNum = document.getElementById('chooseNum');
 
+	// 通过 getByClass 获取  数字键盘版块、字母键盘版块、特殊字符板块 用 name + Div 表示
+	var NumDiv = getByClass(bodyTag, 'num')[0];
+	var alpDiv = getByClass(bodyTag, 'English')[0];
+	var symDiv = getByClass(bodyTag, 'symbolBoard')[0];
+	var boardsArray = [NumDiv, alpDiv, symDiv];
+	// 选项的 元素 
+	var changeParent = getByClass(bodyTag, 'line')[0];
+	var changeBtns = changeParent.getElementsByTagName('p');
+	console.log(changeBtns)
+
+	// 选项卡的添加  .on 表示选项的背景色， .active表示显示的版块
+	for(var i = 0; i < changeBtns.length; i++) {
+		(function(index){
+			changeBtns[i].onclick=function(){
+				switch (changeBtns[i]) {
+					case 'NumDiv':
+						chuooseNum_fn();
+						break;
+					case 'alpDiv':
+						chooseAlp_fn();
+						break;
+					case 'symDiv':
+						chooseSym_fn();
+						break;
+				}
+				for(var i=0;i<changeBtns.length;i++){
+					removeClass(changeBtns[i], 'on');
+					removeClass(boardsArray[i], 'active');
+					// changeBtns[i].style.display = 'none';
+					// boardsArray[i].className='';	
+				}
+				addClass(this, 'on');
+				addClass(boardsArray[index], 'active');
+				// this.className='on';
+				// boardsArray[index].className='active';
+			};
+
+			function hasClass( elements,cName ){ 
+				return !!elements.className.match( new RegExp( "(\\s|^)" + cName + "(\\s|$)") ); // ( \\s|^ ) 判断前面是否有空格 （\\s | $ ）判断后面是否有空格 两个感叹号为转换为布尔值 以方便做判断 
+			}; 
+
+			function addClass( elements,cName ){ 
+				if( !hasClass( elements,cName ) ){ 
+					elements.className += " " + cName; 
+				}; 
+			}; 
+			function removeClass( elements,cName ){ 
+				if( hasClass( elements,cName ) ){ 
+					elements.className = elements.className.replace( new RegExp( "(\\s|^)" + cName + "(\\s|$)" )," " ); // replace方法是替换 
+				}
+			}
+
+		})(i);
+	}
+
 	// 切换到数字
-	chooseNum.onclick = function(){
+	boardsArray[0].addEventListener('click', chuooseNum_fn(), false);
+
+	function chuooseNum_fn(){
+		alert('数字')
 		// 数字的第 8 项是 删除， 最后一项是登陆;
 		numberBoard_arr = shuffle(numberBoard_arr, 8);
 		console.log(numberBoard_arr);
@@ -174,12 +235,12 @@
 		}
 		numberBoard.innerHTML = numberInnerHtml;
 		numberBoard_arr = renewArr(numberBoard_arr, 8);
-		// var NumDiv = getByClass('body', 'num');
-		// NumDiv.style.display = 'block';
-		
 	}
 	// 切换到字母
-	chooseAlp.onclick = function() {
+	chooseAlp.addEventListener('click', chooseAlp_fn(), false);
+
+	function chooseAlp_fn() {
+		alert('字母')
 		// 字母键盘的第 19 项是 切换大小写 ； 最后一项是删除
 		alphabetBoard_arr = shuffle(alphabetBoard_arr, 19);
 		console.log(alphabetBoard_arr);
@@ -189,11 +250,13 @@
 		}
 		alphabetBoard.innerHTML = alphabetInnerHTML;
 		alphabetBoard_arr = renewArr(alphabetBoard_arr, 19);
-		// alphabetBoard_arr = 
 	}
 
 	// 切换到特殊符号
-	chooseSym.onclick = function() {
+	chooseSym.addEventListener('click', chooseSym_fn(), false);
+
+	function chooseSym_fn() {
+		alert('特殊符号')
 		// 特殊符号的第 27 项是 删除， 最后一项是登陆；
 		symbolBoard_arr = shuffle(symbolBoard_arr, 27);
 		console.log(symbolBoard_arr);
@@ -265,6 +328,7 @@
 	    return res;
 	  }
 	}
+
 </script>
 </body>
 </html> 

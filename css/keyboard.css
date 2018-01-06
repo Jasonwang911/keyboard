@@ -105,6 +105,7 @@
 .English{
   width: 100%;
   margin-top: 0.3rem;
+  display: none;
 }
 .English .first{
   width: 98%;
@@ -192,4 +193,11 @@
   background-color: aqua;
   border-radius: 0.08rem;
   line-height: 1rem;
+}
+/* 显示 */
+.active{
+  display: block;
+}
+.on{
+  background: skyblue;
 }
