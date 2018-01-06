@@ -195,6 +195,9 @@
   line-height: 1rem;
 }
 /* 显示 */
+.keyBoard{
+  display: none;
+}
 .active{
   display: block;
 }
