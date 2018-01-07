@@ -238,7 +238,6 @@
 	}
 	// 切换到字母
 	function chooseAlp_fn() {
-		console.log(222)
 		// 字母键盘的第 19 项是 切换大小写 ； 最后一项是删除
 		alphabetBoard_arr = shuffle(alphabetBoard_arr, 19);
 		console.log(alphabetBoard_arr);
@@ -252,7 +251,6 @@
 
 	// 切换到特殊符号
 	function chooseSym_fn() {
-		console.log(3333)
 		// 特殊符号的第 27 项是 删除， 最后一项是登陆；
 		symbolBoard_arr = shuffle(symbolBoard_arr, 27);
 		console.log(symbolBoard_arr);
@@ -270,6 +268,21 @@
 		arr.pop();
 		return arr;
 	}
+
+	// 随机排序， 并添加 需要添加的添加项
+	// function  shuffle(array, addObj) {
+	// 	var tmp, current, top =array.length;
+	//     if(top) while(--top){
+	// 	    current =Math.floor(Math.random() * (top + 1));
+	// 	    tmp =array[current];
+	// 	    array[current] =array[top];
+	// 	    array[top] = tmp;
+	//     }
+	//     for(var name in addObj) {
+	//     	array.splice(addObj[name].index, 0, addObj[name].innerName); 
+	//     }
+	//     return array;
+	// }
 
 	//  随机排序， 并添加 删除按钮和提交登陆按钮
 	function shuffle(array, delIndex) {
