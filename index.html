@@ -54,18 +54,6 @@
 		<!-- 数字键盘 -->
 		<div class="num active">
 			<ul id="numberBoard">
-				<!-- <li>1</li>
-				<li>2</li>
-				<li>3</li>
-				<li>4</li>
-				<li>5</li>
-				<li>6</li>
-				<li>7</li>
-				<li>8</li>
-				<li>删除</li>
-				<li>0</li>
-				<li>9</li>
-				<li>登陆</li> -->
 			</ul>
 		</div>
 		<!-- 字母键盘 -->
@@ -82,28 +70,6 @@
 				<li>I</li>
 				<li>J</li>
 			</ul>
-			<!-- <ul class="middle">
-				<li>K</li>
-				<li>L</li>
-				<li>M</li>
-				<li>N</li>
-				<li>O</li>
-				<li>P</li>
-				<li>Q</li>
-				<li>R</li>
-				<li>S</li>
-			</ul>
-			<ul class="last">
-				<li class="change">切换</li>
-				<li>T</li>
-				<li>U</li>
-				<li>V</li>
-				<li>W</li>
-				<li>X</li>
-				<li>Y</li>
-				<li>Z</li>
-				<li class="delt">删除</li>
-			</ul> -->
 			<div class="last">
 				<p>比财科技银行安全键盘</p>
 				<p>登 录</p>
@@ -112,43 +78,6 @@
 		<!-- 特殊符号键盘 -->
 		<div class="symbolBoard">
 			<ul id="symbolBoard">
-				<!-- <li>[</li>
-				<li>]</li>
-				<li>{</li>
-				<li>}</li>
-				<li>#</li>
-				<li>%</li>
-				<li>^</li>
-				<li>*</li>
-				<li>+</li>
-				<li>=</li>
-				<li>_</li>
-				<li>-</li>
-				<li>/</li>
-				<li>:</li>
-				<li>;</li>
-				<li>(</li>
-				<li>)</li>
-				<li>$</li>
-				<li>&</li>
-				<li>@</li>
-				<li>.</li>
-				<li>,</li>
-				<li>?</li>
-				<li>!</li>
-				<li>'</li>
-				<li>\</li>
-				<li>|</li>
-				<li>~</li>
-				<li class="del">删除</li>
-				<li>`</li>
-				<li><</li>
-				<li>></li>
-				<li>■</li>
-				<li>♣</li>
-				<li>￥</li>
-				<li>"</li>
-				<li class="login_mobile">登陆</li> -->
 			</ul>
 		</div>
 	</div>
@@ -182,6 +111,69 @@
 	// 初始化键盘
 	chooseNum_fn();
 
+	var input = '';
+
+	// 键盘的输入
+	function keyInNum() {
+		var numberBoardLis = numberBoard.getElementsByTagName('li');
+		for(var i = 0; i < numberBoardLis.length; i++) {
+			(function(index) {
+				numberBoardLis[index].onclick = function(ev) {
+					var ev = ev || event;
+					var target = ev.target || ev.srcElement;
+					if(target.className == 'delKey') {
+						input = input.substring(0, input.length-1);
+					}else if(target.className == 'completeKey') {
+
+					}else {
+						input += target.innerHTML;
+					}
+					console.log(input);
+				}
+			})(i);
+		}
+	}
+
+	function keyInAlp() {
+		var alphabetBoardLis = alphabetBoard.getElementsByTagName('li');
+		for(var i = 0; i < alphabetBoardLis.length; i++) {
+			(function(index) {
+				alphabetBoardLis[index].onclick = function(ev) {
+					var ev = ev || event;
+					var target = ev.target || ev.srcElement;
+					if(target.className == 'delKey') {
+						input = input.substring(0, input.length-1);
+					}else if(target.className == 'completeKey') {
+
+					}else {
+						input += target.innerHTML;
+					}
+					console.log(input);
+				}
+			})(i);
+		}
+	}
+	
+	function keyInSym() {
+		var symbolBoardLis = symbolBoard.getElementsByTagName('li');
+		for(var i = 0; i < symbolBoardLis.length; i++) {
+			(function(index) {
+				symbolBoardLis[index].onclick = function(ev) {
+					var ev = ev || event;
+					var target = ev.target || ev.srcElement;
+					if(target.className == 'delKey') {
+						input = input.substring(0, input.length-1);
+					}else if(target.className == 'completeKey') {
+
+					}else {
+						input += target.innerHTML;
+					}
+					console.log(input);
+				}
+			})(i);
+		}
+	}
+
 	// 选项卡的添加  .on 表示选项的背景色， .active表示显示的版块
 	for(var i = 0; i < changeBtns.length; i++) {
 		(function(index){
@@ -204,7 +196,15 @@
 				}
 				addClass(this, 'on');
 				addClass(boardsArray[index], 'active');
+
+				keyInNum();
+				keyInAlp();
+				keyInSym();
 			};
+
+			keyInNum();
+			keyInAlp();
+			keyInSym();
 
 			function hasClass( elements,cName ){ 
 				return !!elements.className.match( new RegExp( "(\\s|^)" + cName + "(\\s|$)") ); // ( \\s|^ ) 判断前面是否有空格 （\\s | $ ）判断后面是否有空格 两个感叹号为转换为布尔值 以方便做判断 
@@ -231,7 +231,13 @@
 		console.log(numberBoard_arr);
 		var numberInnerHtml = '';
 		for(var i = 0; i < numberBoard_arr.length; i++) {
-			numberInnerHtml += '<li>'+numberBoard_arr[i]+'</li>';
+			if(i == 8) {
+				numberInnerHtml += '<li class="delKey">删除</li>';
+			}else if(i == (numberBoard_arr.length - 1)){
+				numberInnerHtml += '<li class="completeKey">登陆</li>';
+			}else {
+				numberInnerHtml += '<li>'+numberBoard_arr[i]+'</li>';
+			}
 		}
 		numberBoard.innerHTML = numberInnerHtml;
 		numberBoard_arr = renewArr(numberBoard_arr, 8);
@@ -239,27 +245,39 @@
 	// 切换到字母
 	function chooseAlp_fn() {
 		// 字母键盘的第 19 项是 切换大小写 ； 最后一项是删除
-		alphabetBoard_arr = shuffle(alphabetBoard_arr, 19);
+		alphabetBoard_arr = shuffle(alphabetBoard_arr, 20);
 		console.log(alphabetBoard_arr);
 		var alphabetInnerHTML = '';
 		for(var i = 0; i < alphabetBoard_arr.length; i++) {
-			alphabetInnerHTML += '<li>'+alphabetBoard_arr[i]+'</li>'
+			if(i == 20) {
+				alphabetInnerHTML += '<li class="upperKey">切换</li>';
+			}else if(i == (alphabetBoard_arr.length -1)){
+				alphabetInnerHTML += '<li class="delKey">删除</li>';
+			}else {
+				alphabetInnerHTML += '<li>'+alphabetBoard_arr[i]+'</li>';
+			}
 		}
 		alphabetBoard.innerHTML = alphabetInnerHTML;
-		alphabetBoard_arr = renewArr(alphabetBoard_arr, 19);
+		alphabetBoard_arr = renewArr(alphabetBoard_arr, 20);
 	}
 
 	// 切换到特殊符号
 	function chooseSym_fn() {
 		// 特殊符号的第 27 项是 删除， 最后一项是登陆；
-		symbolBoard_arr = shuffle(symbolBoard_arr, 27);
+		symbolBoard_arr = shuffle(symbolBoard_arr, 28);
 		console.log(symbolBoard_arr);
 		var symbolInnerHtml = '';
 		for(var i = 0; i < symbolBoard_arr.length; i++) {
-			symbolInnerHtml += '<li>'+symbolBoard_arr[i]+'</li>';
+			if(i == 28) {
+				symbolInnerHtml += '<li class="delKey">删除</li>';
+			}else if(i == (symbolBoard_arr.length - 1) ) {
+				symbolInnerHtml += '<li class="completeKey">登陆</li>';
+			}else {
+				symbolInnerHtml += '<li>'+symbolBoard_arr[i]+'</li>';
+			}
 		}
 		symbolBoard.innerHTML = symbolInnerHtml;
-		symbolBoard_arr = renewArr(symbolBoard_arr, 27);
+		symbolBoard_arr = renewArr(symbolBoard_arr, 28);
 	}
 
 	// 恢复数组，删除掉 删除按钮和登陆按钮
