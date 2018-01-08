@@ -150,7 +150,6 @@
 							isShuffle = false;
 							for(var j = 0; j < alphabetBoard_arr.length; j++) {
 								alphabetBoard_arr[j] = alphabetBoard_arr[j].toUpperCase();
-								console.log(alphabetBoard_arr[j])
 							}
 						}else{
 						// 大写 =》小写
@@ -182,10 +181,7 @@
 					if(target.className == 'delKey') {
 						input = input.substring(0, input.length-1);
 					}else if(target.className == 'completeKey') {
-						for(var i = 0; i < alphabetBoard_arr.length; i++) {
-							alphabetBoard_arr[i].toUpperCase();
-						}
-						chooseAlp_fn();
+
 					}else {
 						input += target.innerHTML;
 					}
@@ -255,12 +251,14 @@
 		console.log(numberBoard_arr);
 		var numberInnerHtml = '';
 		for(var i = 0; i < numberBoard_arr.length; i++) {
-			if(i == 8) {
-				numberInnerHtml += '<li class="delKey">删除</li>';
-			}else if(i == (numberBoard_arr.length - 1)){
+			if(i == (numberBoard_arr.length - 1)) {
 				numberInnerHtml += '<li class="completeKey">登陆</li>';
-			}
-			numberInnerHtml += '<li>'+numberBoard_arr[i]+'</li>';
+			}else {
+				if(i == 8){
+					numberInnerHtml += '<li class="delKey">删除</li>';
+				}
+				numberInnerHtml += '<li>'+numberBoard_arr[i]+'</li>';
+			}	
 		}
 		numberBoard.innerHTML = numberInnerHtml;
 		numberBoard_arr = renewArr(numberBoard_arr, 8);
@@ -277,13 +275,14 @@
 		console.log(alphabetBoard_arr);
 		var alphabetInnerHTML = '';
 		for(var i = 0; i < alphabetBoard_arr.length; i++) {
-			if(i == 20) {
-				alphabetInnerHTML += '<li class="upperKey">切换</li>';
-			}else if(i == (alphabetBoard_arr.length -1)){
+			if(i == (alphabetBoard_arr.length - 1)) {
 				alphabetInnerHTML += '<li class="delKey">删除</li>';
 			}else {
+				if(i == 20){
+					alphabetInnerHTML += '<li class="upperKey">切换</li>';
+				}
 				alphabetInnerHTML += '<li>'+alphabetBoard_arr[i]+'</li>';
-			}
+			}	
 		}
 		alphabetBoard.innerHTML = alphabetInnerHTML;
 		alphabetBoard_arr = renewArr(alphabetBoard_arr, 20);
@@ -296,13 +295,14 @@
 		console.log(symbolBoard_arr);
 		var symbolInnerHtml = '';
 		for(var i = 0; i < symbolBoard_arr.length; i++) {
-			if(i == 28) {
-				symbolInnerHtml += '<li class="delKey">删除</li>';
-			}else if(i == (symbolBoard_arr.length - 1) ) {
+			if(i == (symbolBoard_arr.length - 1)) {
 				symbolInnerHtml += '<li class="completeKey">登陆</li>';
 			}else {
+				if(i == 28){
+					symbolInnerHtml += '<li class="delKey">删除</li>';
+				}
 				symbolInnerHtml += '<li>'+symbolBoard_arr[i]+'</li>';
-			}
+			}	
 		}
 		symbolBoard.innerHTML = symbolInnerHtml;
 		symbolBoard_arr = renewArr(symbolBoard_arr, 28);
