@@ -85,7 +85,7 @@
 	// 字母键盘
 	var alphabetBoard_arr = ['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m'];
 	// 特殊符号键盘
-	var symbolBoard_arr = ['[', ']', '{', '}', '#', '%', '^', '*', '+', '=', '_', '-',  ':', ';', '(', ')', '$', '&', '@', '.', ',', '?', '!', '\'', '\'', '|', '~' , '`', '<', '>', '♥', '♠','￥', '"'];
+	var symbolBoard_arr = ['[', ']', '{', '}', '#', '%', '^', '*', '+', '=', '_', '-',  ':', ';', '(', ')', '$', '\&', '@', '.', ',', '?', '!', '\'', '\'', '|', '~' , '`', '\<', '\>', '♥', '♠','￥', '"'];
 	// 选择字母键盘按钮
 	var chooseNum = document.getElementById('chooseNum');
 
@@ -183,12 +183,33 @@
 					}else if(target.className == 'completeKey') {
 
 					}else {
-						input += target.innerHTML;
+						input += safe_tags_replace(target.innerHTML);
 					}
 					console.log(input);
 				}
 			})(i);
 		}
+	}
+
+	var tagsToReplace = {  
+		'&amp;' : '&',
+		'&lt;': '<',
+		'&gt;': '>'  
+	};  
+	   
+	function replaceTag(tag) {  
+		if(tagsToReplace[tag]) {
+			return true;
+		}
+	    return false;  
+	}  
+	   
+	function safe_tags_replace(str) { 
+		if(replaceTag(str)) {
+			return tagsToReplace[str];
+		}else{
+			return str;
+		} 
 	}
 
 	function btnInit() {
