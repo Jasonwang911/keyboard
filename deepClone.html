@@ -3,8 +3,171 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<style type="text/css">
+		body,h1,h2,h3,h4,h5,h6,p,ol,ul,dl,dt,dd,input,textarea{
+		    padding:0;
+		    margin:0;
+		}
+		.box{
+			display: flex;
+			display: -webkit-flex;
+			width:100%;
+			/*flex-direction: row;*/
+			/*flex-wrap: wrap-reverse;*/
+			/*flex-flow: row wrap-reverse;*/
+			/*justify-content: flex-end;*/
+		}
+		.box p{
+			/*width: 2rem;*/
+		}
+		.box2{
+
+		}
+		.point{
+			position: absolute;
+			left: 50%;
+			top: 50%;
+		}
+	</style>
+	<!-- <link rel="stylesheet" type="text/css" href="css/reset.css"> -->
+	<script src="./js/rem.js"></script>
+	<script src="js/jquery.min.js"></script>
 </head>
 <body>
+	<div class="box">
+		<p>容器1</p>
+		<p>容器2</p>
+		<p>容器3</p>
+		<!-- <p>容器4</p>
+		<p>容器5</p> -->
+	</div>
+	<div class="box2">
+		<p>容器一</p>
+	</div>
+	 <div class="point">
+        <div class="pop"></div>
+    </div>
+
+    <input type="file" name="" id="fileInput">
+
+	<script>
+		var a = 2;
+		// var b = 2;
+		// a++;
+		// ++b;
+		// console.log(a == b)
+		// console.log(a, b)
+		console.log('a++',a++);
+		console.log('a', a);
+		console.log('++a', ++a);
+		console.log('a', a);
+
+		fileInput.onchange = function getFile(ev) {
+			alert('111')
+			// console.log(ev.dataTransfer)
+			// var oFile = ev.dataTransfer.files[0];
+            var reader = new FileReader();
+            console.log(reader)
+            //读取成功
+            reader.onload = function(){
+                console.log(reader);
+            };
+            reader.onloadstart = function(){
+                alert('读取开始');
+            };
+            reader.onloadend = function(){
+                alert('读取结束');
+            };
+            reader.onabort = function(){
+                alert('中断');
+            };
+            reader.onerror = function(){
+                alert('读取失败');
+            };
+
+		}
+
+
+		// var time,startTime,endTime,timer;
+		// var modelType = true;
+
+		// startTime = new Date();
+		// $.ajax({
+		// 	data: '文件上传',
+		// 	success: function () {
+		// 		modelType = !modelType;
+		// 		aaa()
+		// 	}
+		// })
+
+		// function aaa() {
+			
+		// 	endTime = new Date();
+		// 	time = endTime.getTime() - startTime.getTime();
+		// 	timer = setTimeout(() => {
+		// 		if(modelType) clearTimeout(timer);
+		// 		aaa();
+		// 		// 关闭model
+		// 	},time);
+		// }
+
+		// $.ajax({
+		// 	data: '文件上传',
+		// 	success: function () {
+		// 		modelType = !modelType;
+		// 		aaa()
+		// 	}
+		// })
+
+
+
+
+	// 	var page = 0;
+	// // 加载刷新。
+	// function refresh(refresh,loadmore) {
+	//   $(window).scroll(function(){
+	//     console.log('正在滑动f');
+
+	//     var scrollTop = $(this).scrollTop();    //滚动条距离顶部的高度
+	//     var scrollHeight = $(document).height();   //当前页面的总高度
+	//     var clientHeight = $(this).height();    //当前可视的页面高度
+	//     console.log(scrollTop + clientHeight , (scrollHeight ))
+	//     // console.log("top:"+scrollTop+",doc:"+scrollHeight+",client:"+clientHeight);
+	//     if(scrollTop + clientHeight >= scrollHeight - 5){   //距离顶部+当前高度 >=文档总高度 即代表滑动到底部 count++;         //每次滑动count加1
+	//       // filterData(serviceTypeId,industryId,cityId,count); //调用筛选方法，count为当前分页数
+	//       console.log('下拉');
+
+	//       if(loadmore){
+	//         loadmore();
+	//       }
+	//     }else if(scrollTop<=0){
+	//       //滚动条距离顶部的高度小于等于0 TODO
+	//       //alert("下拉刷新，要在这调用啥方法？");
+	      
+	//       console.log('上拉');
+	//       if(refresh){
+	//         refresh();
+	//       }
+
+	//     }
+
+	//   });
+
+	// }
+
+
+	// //调用
+	// refresh(fn1,fn2);
+
+	// function fn1() {
+	// 	alert('下拉刷新');
+	// }
+
+	// function fn2() {
+	// 	alert('上拉加载')
+	// }
+	</script>
+
 	<script>
 	function deepClone(obj) {
 	    var _toString = Object.prototype.toString;

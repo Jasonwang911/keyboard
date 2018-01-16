@@ -15,17 +15,6 @@
 	<link rel="stylesheet" href="./css/reset.css">
 	<link rel="stylesheet" type="text/css" href="./css/keyboard.css">
 	<script src="js/rem.js"></script>
-	<style>
-		.nav{
-			width: 100%;
-			height: 3.6rem;
-			background: url('./images/doneBG.jpg') no-repeat;
-			background-size: cover;
-		}
-		input{
-			background: aqua;
-		}
-	</style>
 </head>
 <body>
 	<div class="nav"></div>
@@ -54,56 +43,12 @@
 		<!-- 数字键盘 -->
 		<div class="num active">
 			<ul id="numberBoard">
-				<!-- <li>1</li>
-				<li>2</li>
-				<li>3</li>
-				<li>4</li>
-				<li>5</li>
-				<li>6</li>
-				<li>7</li>
-				<li>8</li>
-				<li>删除</li>
-				<li>0</li>
-				<li>9</li>
-				<li>登陆</li> -->
 			</ul>
 		</div>
 		<!-- 字母键盘 -->
 		<div class="English">
 			<ul class="first" id="alphabetBoard">
-				<li>A</li>
-				<li>B</li>
-				<li>c</li>
-				<li>D</li>
-				<li>E</li>
-				<li>F</li>
-				<li>G</li>
-				<li>H</li>
-				<li>I</li>
-				<li>J</li>
 			</ul>
-			<!-- <ul class="middle">
-				<li>K</li>
-				<li>L</li>
-				<li>M</li>
-				<li>N</li>
-				<li>O</li>
-				<li>P</li>
-				<li>Q</li>
-				<li>R</li>
-				<li>S</li>
-			</ul>
-			<ul class="last">
-				<li class="change">切换</li>
-				<li>T</li>
-				<li>U</li>
-				<li>V</li>
-				<li>W</li>
-				<li>X</li>
-				<li>Y</li>
-				<li>Z</li>
-				<li class="delt">删除</li>
-			</ul> -->
 			<div class="last">
 				<p>比财科技银行安全键盘</p>
 				<p>登 录</p>
@@ -112,232 +57,11 @@
 		<!-- 特殊符号键盘 -->
 		<div class="symbolBoard">
 			<ul id="symbolBoard">
-				<!-- <li>[</li>
-				<li>]</li>
-				<li>{</li>
-				<li>}</li>
-				<li>#</li>
-				<li>%</li>
-				<li>^</li>
-				<li>*</li>
-				<li>+</li>
-				<li>=</li>
-				<li>_</li>
-				<li>-</li>
-				<li>/</li>
-				<li>:</li>
-				<li>;</li>
-				<li>(</li>
-				<li>)</li>
-				<li>$</li>
-				<li>&</li>
-				<li>@</li>
-				<li>.</li>
-				<li>,</li>
-				<li>?</li>
-				<li>!</li>
-				<li>'</li>
-				<li>\</li>
-				<li>|</li>
-				<li>~</li>
-				<li class="del">删除</li>
-				<li>`</li>
-				<li><</li>
-				<li>></li>
-				<li>■</li>
-				<li>♣</li>
-				<li>￥</li>
-				<li>"</li>
-				<li class="login_mobile">登陆</li> -->
 			</ul>
 		</div>
 	</div>
     
 
-<script>
-	var bodyTag = document.getElementsByTagName('body')[0];
-	// 密码输入框
-	var passwordBtn = document.getElementById('passwordBtn');
-	// 特殊符号区域
-	var symbolBoard = document.getElementById('symbolBoard');
-
-	// 数字键盘
-	var numberBoard_arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-	// 字母键盘
-	var alphabetBoard_arr = ['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m'];
-	// 特殊符号键盘
-	var symbolBoard_arr = ['[', ']', '{', '}', '#', '%', '^', '*', '+', '=', '_', '-',  ':', ';', '(', ')', '$', '&', '@', '.', ',', '?', '!', '\'', '\'', '|', '~' , '`', '<', '>', '♥', '♠','￥', '"'];
-	// 选择字母键盘按钮
-	var chooseNum = document.getElementById('chooseNum');
-
-	// 通过 getByClass 获取  数字键盘版块、字母键盘版块、特殊字符板块 用 name + Div 表示
-	var NumDiv = getByClass(bodyTag, 'num')[0];
-	var alpDiv = getByClass(bodyTag, 'English')[0];
-	var symDiv = getByClass(bodyTag, 'symbolBoard')[0];
-	var boardsArray = [NumDiv, alpDiv, symDiv];
-	// 选项的 元素 
-	var changeParent = getByClass(bodyTag, 'line')[0];
-	var changeBtns = changeParent.getElementsByTagName('p');
-
-	// 初始化键盘
-	chooseNum_fn();
-
-	// 选项卡的添加  .on 表示选项的背景色， .active表示显示的版块
-	for(var i = 0; i < changeBtns.length; i++) {
-		(function(index){
-			changeBtns[index].onclick=function(){
-				if(hasClass( changeBtns[index] , 'on')) return;
-				switch (index) {
-					case 0:
-						chooseNum_fn();
-						break;
-					case 1:
-						chooseAlp_fn();
-						break;
-					case 2:
-						chooseSym_fn();
-						break;
-				}
-				for(var i=0;i<changeBtns.length;i++){
-					removeClass(changeBtns[i], 'on');
-					removeClass(boardsArray[i], 'active');
-				}
-				addClass(this, 'on');
-				addClass(boardsArray[index], 'active');
-			};
-
-			function hasClass( elements,cName ){ 
-				return !!elements.className.match( new RegExp( "(\\s|^)" + cName + "(\\s|$)") ); // ( \\s|^ ) 判断前面是否有空格 （\\s | $ ）判断后面是否有空格 两个感叹号为转换为布尔值 以方便做判断 
-			}; 
-
-			function addClass( elements,cName ){ 
-				if( !hasClass( elements,cName ) ){ 
-					elements.className += " " + cName; 
-				}; 
-			}; 
-			function removeClass( elements,cName ){ 
-				if( hasClass( elements,cName ) ){ 
-					elements.className = elements.className.replace( new RegExp( "(\\s|^)" + cName + "(\\s|$)" )," " ); // replace方法是替换 
-				}
-			}
-
-		})(i);
-	}
-
-	// 切换到数字
-	function chooseNum_fn(){
-		// 数字的第 8 项是 删除， 最后一项是登陆;
-		numberBoard_arr = shuffle(numberBoard_arr, 8);
-		console.log(numberBoard_arr);
-		var numberInnerHtml = '';
-		for(var i = 0; i < numberBoard_arr.length; i++) {
-			numberInnerHtml += '<li>'+numberBoard_arr[i]+'</li>';
-		}
-		numberBoard.innerHTML = numberInnerHtml;
-		numberBoard_arr = renewArr(numberBoard_arr, 8);
-	}
-	// 切换到字母
-	function chooseAlp_fn() {
-		// 字母键盘的第 19 项是 切换大小写 ； 最后一项是删除
-		alphabetBoard_arr = shuffle(alphabetBoard_arr, 19);
-		console.log(alphabetBoard_arr);
-		var alphabetInnerHTML = '';
-		for(var i = 0; i < alphabetBoard_arr.length; i++) {
-			alphabetInnerHTML += '<li>'+alphabetBoard_arr[i]+'</li>'
-		}
-		alphabetBoard.innerHTML = alphabetInnerHTML;
-		alphabetBoard_arr = renewArr(alphabetBoard_arr, 19);
-	}
-
-	// 切换到特殊符号
-	function chooseSym_fn() {
-		// 特殊符号的第 27 项是 删除， 最后一项是登陆；
-		symbolBoard_arr = shuffle(symbolBoard_arr, 27);
-		console.log(symbolBoard_arr);
-		var symbolInnerHtml = '';
-		for(var i = 0; i < symbolBoard_arr.length; i++) {
-			symbolInnerHtml += '<li>'+symbolBoard_arr[i]+'</li>';
-		}
-		symbolBoard.innerHTML = symbolInnerHtml;
-		symbolBoard_arr = renewArr(symbolBoard_arr, 27);
-	}
-
-	// 恢复数组，删除掉 删除按钮和登陆按钮
-	function renewArr(arr, index) {
-		arr = deleteArr(arr, index);
-		arr.pop();
-		return arr;
-	}
-
-	// 随机排序， 并添加 需要添加的添加项
-	// function  shuffle(array, addObj) {
-	// 	var tmp, current, top =array.length;
-	//     if(top) while(--top){
-	// 	    current =Math.floor(Math.random() * (top + 1));
-	// 	    tmp =array[current];
-	// 	    array[current] =array[top];
-	// 	    array[top] = tmp;
-	//     }
-	//     for(var name in addObj) {
-	//     	array.splice(addObj[name].index, 0, addObj[name].innerName); 
-	//     }
-	//     return array;
-	// }
-
-	//  随机排序， 并添加 删除按钮和提交登陆按钮
-	function shuffle(array, delIndex) {
-	    var tmp, current, top =array.length;
-	    if(top) while(--top){
-		    current =Math.floor(Math.random() * (top + 1));
-		    tmp =array[current];
-		    array[current] =array[top];
-		    array[top] = tmp;
-	    }
-	    array.splice(delIndex, 0, '删除');
-	    array[array.length] ='登陆';
-	    return array;
-	}
-
-	// 删除数组的 index 项
-	function deleteArr(arr,index) {
-		var temArray=[];
-		for(var i=0;i<arr.length;i++){
-			if(i!=index){
-				temArray.push(arr[i]);
-			}
-		}
-		return temArray;
-	}
-
-	// 键盘开关
-	var boardSwitch = false;
-	passwordBtn.onclick = function () {
-		boardSwitch = !boardSwitch;
-		var keyBoard = getByClass(bodyTag, 'keyBoard')[0];
-		if(boardSwitch) {
-			keyBoard.style.display = 'block';
-		}else {
-			keyBoard.style.display = 'none';
-		}
-	}
-
-	// getElementByClassName
-	function getByClass(parent, cls){
-	  if(parent.getElementsByClassName){
-	    return parent.getElementsByClassName(cls);
-	  }else{
-	    var res = [];
-	    var reg = new RegExp(' ' + cls + ' ', 'i')
-	    var ele = parent.getElementsByTagName('*');
-	    for(var i = 0; i < ele.length; i++){
-	      if(reg.test(' ' + ele[i].className + ' ')){
-	        res.push(ele[i]);
-	      }
-	    }
-	    return res;
-	  }
-	}
-
-</script>
+<script src="js/keyboard.js"></script>
 </body>
 </html> 
